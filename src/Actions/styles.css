@@ -1,0 +1,5 @@
+.actions {
+  padding: 12px 24px;
+  display: flex;
+  justify-content: flex-end;
+}
