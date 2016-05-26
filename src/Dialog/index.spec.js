@@ -27,6 +27,4 @@ describe('<Dialog />', () => {
       expect(sut).to.contain(<div className="unique" />)
     });
   })
-
-  // width [ SMALL, MEDIUM, LARGE, ]
 })
