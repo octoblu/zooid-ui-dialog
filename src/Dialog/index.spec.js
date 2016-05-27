@@ -6,6 +6,8 @@ import sinon from 'sinon'
 import { mount, shallow } from 'enzyme'
 
 import Dialog from './'
+import Header from '../Header'
+import Body from '../Body'
 
 chai.use(chaiEnzyme())
 
@@ -26,5 +28,25 @@ describe('<Dialog />', () => {
       const sut = shallow(<Dialog show={true}><div className="unique"/></Dialog>)
       expect(sut).to.contain(<div className="unique" />)
     });
+  })
+
+  it('should render title when passed in as prop', () => {
+    const sut = shallow (
+      <Dialog
+        show={true}
+        title="Dialog"
+      />
+    )
+    expect(sut).to.contain(<Header title="Dialog" />)
+  })
+
+  it('should render the body when passed in as a prop', ()=> {
+    const sut = shallow (
+      <Dialog
+        show={true}
+        body="My body"
+      />
+    )
+    expect(sut).to.contain(<Body>My body</Body>)
   })
 })
