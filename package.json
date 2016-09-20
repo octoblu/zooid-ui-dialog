@@ -6,8 +6,10 @@
   "scripts": {
     "clean": "rimraf lib dist coverage",
     "build": "webpack",
-    "test": "nyc --require babel-core/register --require babel-polyfill mocha",
-    "test:watch": "mocha -w -R mocha-multi --reporter-options spec=-,mocha-osx-reporter=-"
+    "test": "mocha",
+    "test:watch": "mocha -w -R mocha-multi --reporter-options spec=-,mocha-osx-reporter=-",
+    "coverage": "nyc npm test",
+    "mocha:json": "mocha --reporter json > coverage/mocha.json"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,19 @@
     "exclude": [
       "src/**/*.spec.js",
       "dist"
+    ],
+    "cache": true,
+    "reporter": [
+      "text-summary",
+      "lcov",
+      "json"
+    ],
+    "require": [
+      "babel-core/register",
+      "babel-polyfill"
+    ],
+    "extension": [
+      ".coffee"
     ]
   },
   "devDependencies": {
